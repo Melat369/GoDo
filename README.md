@@ -77,15 +77,15 @@ This project demonstrates the use of **Go slices**, **maps**, and **error handli
 
 The following people have contributed to this project:
 
-- **John Doe**  
+- **Melat Tesfaye**  
   GitHub: [Melat Tesfaye](https://github.com/Melat369)  
   Email: [melat.tesfaye.123456@gmail.com](mailto:melat.tesfaye.123456@gmail.com)
 
-- **Jane Smith**  
+- **Getinet Amare**  
   GitHub: [GetinetAmareGitHub](https://github.com/gama1221)  
   Email: [getinet.neu@gmail.com](mailto:geitnet.new@gmail.com)
 
-- **Alex Brown**  
+- **Yohans Samuel**  
   GitHub: [YohansSamuelGitHub](https://github.com/YohansSamuel)  
   Email: [YohansSamuel@gmail.com](mailto:YohansSamuel@gmail.com)
 ## Course Instructor
