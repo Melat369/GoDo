@@ -32,10 +32,9 @@ This project demonstrates the use of **Go slices**, **maps**, and **error handli
 2. Install Go if you don't have it installed yet. You can download Go from the official website: [Go Downloads](https://golang.org/dl/).
 
 3. Initialize and run the Go application:
-
-    ```bash
-    go run cmd/main.go
-    ```
+  ```bash
+   go run cmd/main.go
+  ```
 
 ## Usage
 
@@ -44,26 +43,22 @@ This project demonstrates the use of **Go slices**, **maps**, and **error handli
   
   Example:
   ```bash
-  add milk Dairy
+  Choose an action: add, complete, delete, list, or exit
+    -> add
+    Enter grocery title: Banana
+    Grocery added with ID 1
   ```
 
-- **Sort Items**: Sort items alphabetically within each category.
+ - **List groceries**: list groceries.
 
     Example:
     ```bash
-    sort Dairy
+    Choose an action: add, complete, delete, list, or exit
+    -> add
+    Enter grocery title: jinjer
+    Enter grocery title: Tea
+    Grocery added with ID 2
     ```
-- **Example Run**
-  ```sh
-  > add milk Dairy
-  > add eggs Dairy
-  > add bread Bakery
-  > list Dairy
-  [Milk, Eggs]
-  > delete eggs Dairy
-  > list Dairy
-  [Milk]
-  ```
 ## Project Structure and Sample Tests
 **Project Structure**
 
