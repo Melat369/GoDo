@@ -24,7 +24,7 @@ func (h *CLIHandler) Start(input io.Reader, output io.Writer) {
 	writer := bufio.NewWriter(output)
 
 	for {
-		fmt.Fprintln(writer, "\nChoose an action: add, complete, delete, list, or exit")
+		fmt.Fprintln(writer, "\033[34m\nChoose an action: 'a' to add, 'c' to complete, 'd' to delete, 'l' to list, or 'e' to exit.\033[0m")
 		fmt.Fprint(writer, "-> ")
 		writer.Flush()
 
@@ -34,15 +34,15 @@ func (h *CLIHandler) Start(input io.Reader, output io.Writer) {
 
 		input := strings.TrimSpace(scanner.Text())
 		switch input {
-		case "add":
+		case "a":
 			h.AddGrocery(scanner, writer)
-		case "complete":
+		case "c":
 			h.completeTask(scanner, writer)
-		case "delete":
+		case "d":
 			h.DeleteGrocery(scanner, writer)
-		case "list":
+		case "l":
 			h.ListGrocery(writer)
-		case "exit":
+		case "e":
 			fmt.Fprintln(writer, "Exiting...")
 			writer.Flush()
 			return
@@ -128,8 +128,11 @@ func (h *CLIHandler) ListGrocery(writer io.Writer) {
 		status := "Pending"
 		if grocery.IsDone {
 			status = "Completed"
+		} else if grocery.Deleted {
+			fmt.Fprintf(writer, "\033[31m\033[9mID: %d, Title: %s, Status: %s\033[0m\n", grocery.ID, grocery.Title, status)
+		} else {
+			fmt.Fprintf(writer, "\033[32mID: %d, Title: %s, Status: %s\033[0m\n", grocery.ID, grocery.Title, status)
 		}
-		fmt.Fprintf(writer, "ID: %d, Title: %s, Status: %s\n", grocery.ID, grocery.Title, status)
 	}
 	writer.(*bufio.Writer).Flush()
 }
