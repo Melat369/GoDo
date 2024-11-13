@@ -116,23 +116,35 @@ func (h *CLIHandler) DeleteGrocery(scanner *bufio.Scanner, writer io.Writer) {
 	writer.(*bufio.Writer).Flush()
 }
 func (h *CLIHandler) ListGrocery(writer io.Writer) {
-	groceries := h.service.ListGrocery()
+	groceries, err := h.service.ListGrocery()
+	if err != nil {
+		fmt.Fprintf(writer, "Error fetching groceries: %v\n", err)
+		if bw, ok := writer.(*bufio.Writer); ok {
+			bw.Flush()
+		}
+		return
+	}
+
 	if len(groceries) == 0 {
 		fmt.Fprintln(writer, "No groceries found.")
-		writer.(*bufio.Writer).Flush()
+		if bw, ok := writer.(*bufio.Writer); ok {
+			bw.Flush()
+		}
 		return
 	}
 
 	fmt.Fprintln(writer, "Groceries:")
 	for _, grocery := range groceries {
-		status := "Pending"
+		var status string
 		if grocery.IsDone {
 			status = "Completed"
-		} else if grocery.Deleted {
-			fmt.Fprintf(writer, "\033[31m\033[9mID: %d, Title: %s, Status: %s\033[0m\n", grocery.ID, grocery.Title, status)
 		} else {
-			fmt.Fprintf(writer, "\033[32mID: %d, Title: %s, Status: %s\033[0m\n", grocery.ID, grocery.Title, status)
+			status = "Pending"
 		}
+		fmt.Fprintf(writer, "\033[32mID: %d, Title: %s, Status: %s\033[0m\n", grocery.ID, grocery.Title, status)
 	}
-	writer.(*bufio.Writer).Flush()
+
+	if bw, ok := writer.(*bufio.Writer); ok {
+		bw.Flush()
+	}
 }

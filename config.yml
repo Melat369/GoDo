@@ -1,0 +1,9 @@
+dev:
+  db_connection_string: "postgres://postgres:postgres@localhost:5432/grocery-store-db?sslmode=disable"
+  api_key: "dev-api-key-12345-67890"
+test:
+  db_connection_string: "postgres://postgres:postgres@localhost:5432/grocery-store-db-test?sslmode=disable"
+  api_key: "test-api-key-abcdef-123456"
+prod:
+  db_connection_string: "postgres://postgres:postgres@localhost:5432/grocery-store-db?sslmode=require"
+  api_key: "prod-api-key-xyz987-54321"

@@ -6,5 +6,5 @@ type GroceryService interface {
 	AddGrocery(title string) (entities.Grocery, error)
 	CompleteGrocery(id int) error
 	DeleteGrocery(id int) error
-	ListGrocery() []entities.Grocery
+	ListGrocery() ([]entities.Grocery, error)
 }
